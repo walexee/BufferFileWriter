@@ -6,24 +6,40 @@ using System.Threading;
 
 namespace FileBlockUpload
 {
-    public class BufferedMemoryWriter : IDisposable
+    public class BufferedStreamWriter : IDisposable
     {
         private readonly LinkedList<FileBlock> _pendingFileBlocks;
-        private readonly FileStream _destFileStream;
+        private readonly Stream _destFileStream;
         private static int _blocksUploadCompleted = 0;
         private static int _writingInprogress = 0;
         private static ReaderWriterLockSlim _listLock = new ReaderWriterLockSlim();
         private static Thread _writeThread;
         private const int MaxFileBlocksAllowedInList = 10;
+        private readonly bool _externalStream = false;
 
-        public BufferedMemoryWriter(string destFilePath, long fileLength)
+        public BufferedStreamWriter(string destFilePath, long capacity)
         {
             _pendingFileBlocks = new LinkedList<FileBlock>();
             _destFileStream = File.OpenWrite(destFilePath);
-            _destFileStream.SetLength(fileLength);
+            _destFileStream.SetLength(capacity);
         }
 
-        public void AddFileBlock(byte[] blockContent, long blockIndex)
+        public BufferedStreamWriter(Stream stream, long capacity)
+        {
+            _externalStream = true;
+            _pendingFileBlocks = new LinkedList<FileBlock>();
+            
+            if (!stream.CanSeek || !stream.CanWrite)
+            {
+                // TODO: change exception type
+                throw new InvalidOperationException("The stream needs to be writable and seekable");
+            }
+
+            _destFileStream = stream;
+            _destFileStream.SetLength(capacity);
+        }
+
+        public void WriteFileBlock(byte[] blockContent, long blockIndex)
         {
             var fileBlock = new FileBlock(blockContent, blockIndex);
 
@@ -155,9 +171,12 @@ namespace FileBlockUpload
                 _writeThread.Abort();
             }
 
-            _destFileStream.Flush();
-            _destFileStream.Close();
-            _destFileStream.Dispose();
+            if (!_externalStream)
+            {
+                _destFileStream.Flush();
+                _destFileStream.Close();
+                _destFileStream.Dispose();
+            }
         }
 
         private class FileBlock

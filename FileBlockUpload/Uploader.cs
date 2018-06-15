@@ -91,7 +91,7 @@ namespace FileBlockUpload
             var blockSize = fileLength > BlockSize ? BlockSize : fileLength;
             var blocksCount = (int)Math.Ceiling(fileLength / (double)blockSize);
             var sourceFileStream = sourceFileInfo.OpenRead();
-            var destWriter = new BufferedMemoryWriter(destFilepath, fileLength);
+            var destWriter = new BufferedStreamWriter(destFilepath, fileLength);
 
             for (int i = 0; i < blocksCount; i++)
             {
@@ -103,7 +103,7 @@ namespace FileBlockUpload
                 sourceFileStream.Position = startPos;
                 await sourceFileStream.ReadAsync(fileBlock, 0, currentBlockSize);
 
-                destWriter.AddFileBlock(fileBlock, i);
+                destWriter.WriteFileBlock(fileBlock, i);
             }
 
             destWriter.Dispose();
