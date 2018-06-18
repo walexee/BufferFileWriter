@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBlockUpload", "FileBlockUpload\FileBlockUpload.csproj", "{EF40B442-0B9E-4218-A572-7BD40D19BFF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBlockUpload.Tests", "FileBlockUpload.Tests\FileBlockUpload.Tests.csproj", "{D9835DB5-A3E9-4A0C-81F8-014C04684A03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EF40B442-0B9E-4218-A572-7BD40D19BFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF40B442-0B9E-4218-A572-7BD40D19BFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF40B442-0B9E-4218-A572-7BD40D19BFF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9835DB5-A3E9-4A0C-81F8-014C04684A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9835DB5-A3E9-4A0C-81F8-014C04684A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9835DB5-A3E9-4A0C-81F8-014C04684A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9835DB5-A3E9-4A0C-81F8-014C04684A03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
