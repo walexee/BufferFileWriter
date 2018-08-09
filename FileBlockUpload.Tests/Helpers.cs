@@ -19,7 +19,6 @@ namespace FileBlockUpload.Tests
             }
         }
 
-
         public static string ComputeFileMd5Hash(string filepath)
         {
             using (var fileStream = File.OpenRead(filepath))

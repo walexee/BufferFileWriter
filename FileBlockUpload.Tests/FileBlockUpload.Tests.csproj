@@ -51,6 +51,8 @@
     <Compile Include="Helpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BufferedStreamWriterTests.cs" />
+    <Compile Include="SettingsExtensions.cs" />
+    <Compile Include="SettingsExtensionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
