@@ -45,6 +45,25 @@
     <Compile Include="BufferedStreamWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuizPro\ActivityLog.cs" />
+    <Compile Include="QuizPro\AnswerOption.cs" />
+    <Compile Include="QuizPro\AnswerOptionEntity.cs" />
+    <Compile Include="QuizPro\AnswerOptionStats.cs" />
+    <Compile Include="QuizPro\Enums\ActivityEvent.cs" />
+    <Compile Include="QuizPro\Enums\QuestionType.cs" />
+    <Compile Include="QuizPro\Enums\QuizType.cs" />
+    <Compile Include="QuizPro\FreeFormQuestionResponse.cs" />
+    <Compile Include="QuizPro\MultipleChoiceQuestion.cs" />
+    <Compile Include="QuizPro\MultipleChoiceQuestionResponse.cs" />
+    <Compile Include="QuizPro\QuestionEntity.cs" />
+    <Compile Include="QuizPro\Question.cs" />
+    <Compile Include="QuizPro\QuestionResponse.cs" />
+    <Compile Include="QuizPro\QuestionStats.cs" />
+    <Compile Include="QuizPro\QuestionVersionEntity.cs" />
+    <Compile Include="QuizPro\Quiz.cs" />
+    <Compile Include="QuizPro\QuizReponse.cs" />
+    <Compile Include="QuizPro\QuizSettings.cs" />
+    <Compile Include="QuizPro\QuizStats.cs" />
     <Compile Include="Uploader.cs" />
   </ItemGroup>
   <ItemGroup>
